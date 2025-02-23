@@ -10,29 +10,29 @@ const list = [
 
 // CALLBACK function
 
-function maslahatBering (a, callback) {
-    if (typeof a !== "number") callback("insert a number", null);
-    else if (a <= 20) callback(null, list[0]);
-    else if (a > 20 && a <= 30) callback(null, list[1]);
-    else if (a > 30 && a <= 40) callback(null, list[2]);
-    else if (a > 40 && a <= 50) callback(null, list[3]);
-    else if (a > 50 && a <= 60) callback(null, list[4]);
-    else {
-        setInterval(function () {
-            callback(null, list[5]);
-        }, 1000);
-    }
+// function maslahatBering (a, callback) {
+//     if (typeof a !== "number") callback("insert a number", null);
+//     else if (a <= 20) callback(null, list[0]);
+//     else if (a > 20 && a <= 30) callback(null, list[1]);
+//     else if (a > 30 && a <= 40) callback(null, list[2]);
+//     else if (a > 40 && a <= 50) callback(null, list[3]);
+//     else if (a > 50 && a <= 60) callback(null, list[4]);
+//     else {
+//         setInterval(function () {
+//             callback(null, list[5]);
+//         }, 1000);
+//     }
 
-}
+// }
 
-console.log("passed here 0");
-maslahatBering(65, (err, data) => {
-    if(err) console.log("Error: ", err);
-    else {
-        console.log('jvob: ', data)
-    }
-})
-console.log("passed here 1");
+// console.log("passed here 0");
+// maslahatBering(65, (err, data) => {
+//     if(err) console.log("Error: ", err);
+//     else {
+//         console.log('jvob: ', data)
+//     }
+// })
+// console.log("passed here 1");
 
 // ASYNC function
 
@@ -74,3 +74,52 @@ console.log("passed here 1");
 //     console.log(javob);
 // }
 // run();
+
+// A-TASK
+
+// const countLetter = (letter, word) => {
+//     let count = 0;
+//     for(let i=0; i < word.length; i++){
+//         if (letter == word[i]) {
+//             count += 1;
+//         }
+//     }
+//     return count;
+// }
+// const result = countLetter('A','Amira');
+// console.log(result);
+
+// A-TASK async function
+
+async function countLetter(letter, word) {
+    if(typeof letter !== 'string' && word !== 'string') throw new Error("Insert a string to function!");
+    else {
+        let count = 0;
+        for(let i = 0; i <= word.length; i++ ) {
+            if( letter.toLowerCase() == word.charAt(i).toLowerCase()) {
+                count +=1;
+            }
+        }
+        return `${letter} letter: ${count} times returned!`;
+    }   
+}
+
+// Call via then/catch
+
+// countLetter('e', 'Engineer').then( data => {
+//     console.log('Count of letter: ', data)
+// }).catch( err => {
+//     console.log('Error: ', err)
+// });
+
+// Call via asyn/await
+
+async function run() {
+    let result = await countLetter('E','Engineer');
+    console.log(result);
+    result = await countLetter('A','Mashaqqat izlagan talabalar!');
+    console.log(result);
+    result = await countLetter('w','We are gonna build a new future!');
+    console.log(result);
+}
+run();
