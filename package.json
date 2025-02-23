@@ -4,16 +4,17 @@
   "description": "bu bizning birinchi loyihamiz",
   "main": "server.js",
   "scripts": {
-    "start":"node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon server.js",
-    "train":"nodemon train.js"
+    "dev": "nodemon server.js",
+    "train": "nodemon train.js"
   },
   "author": "amurkhon",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongodb": "^3.2.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
