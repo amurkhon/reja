@@ -19,7 +19,7 @@
             <form id="create-form" action="/create-item" method="POST">
                 <div class="d-flex align-items-center">
                     <input id="create-field"
-                            name="item" 
+                            name="reja" 
                             type="text"
                             autofocus
                             autocomplete="off"
@@ -31,6 +31,21 @@
                     </button>
                 </div>
             </form>
+            <ul id="item-list" class="list-group mt-4">
+                <% items.map(function(item) { %>
+                    <li class="list-group-item list-info d-flex align-items-center justify-content-between">
+                        <span class="item-text"><%=item.reja%></span>
+                        <div>
+                            <button data-id="<%=item._id%>" class="edit-me btn btn-secondary btn-sm mr-1">
+                                Ozgartirish
+                            </button>
+                            <button data-id="<%=item._id%>" class="delete-item btn btn-danger btn-sm">
+                                Ochirish
+                            </button>
+                        </div>
+                    </li>
+                <% }) %>
+              </ul>
             <button id="delete-all" class="btn btn-danger my-4 rounded">Hamma rejalarni o'chirish</button>
         </div>
         

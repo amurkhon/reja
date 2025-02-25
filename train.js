@@ -1,4 +1,4 @@
-console.log("Jack Ma maslahatlari!")
+// console.log("Jack Ma maslahatlari!")
 const list = [
     "yaxshi talaba bo'ling", // 0-20
     "togri boshliq tanlang va koproq xato qiling", //20-30
@@ -18,9 +18,10 @@ const list = [
 //     else if (a > 40 && a <= 50) callback(null, list[3]);
 //     else if (a > 50 && a <= 60) callback(null, list[4]);
 //     else {
-//         setInterval(function () {
-//             callback(null, list[5]);
-//         }, 1000);
+//         callback(null, list[5]);
+//         // setInterval(function () {
+//         //     callback(null, list[5]);
+//         // }, 1000);
 //     }
 
 // }
@@ -91,18 +92,18 @@ const list = [
 
 // A-TASK async function
 
-async function countLetter(letter, word) {
-    if(typeof letter !== 'string' && word !== 'string') throw new Error("Insert a string to function!");
-    else {
-        let count = 0;
-        for(let i = 0; i <= word.length; i++ ) {
-            if( letter.toLowerCase() == word.charAt(i).toLowerCase()) {
-                count +=1;
-            }
-        }
-        return `${letter} letter: ${count} times returned!`;
-    }   
-}
+// async function countLetter(letter, word) {
+//     if(typeof letter !== 'string' && word !== 'string') throw new Error("Insert a string to function!");
+//     else {
+//         let count = 0;
+//         for(let i = 0; i <= word.length; i++ ) {
+//             if( letter.toLowerCase() == word.charAt(i).toLowerCase()) {
+//                 count +=1;
+//             }
+//         }
+//         return `${letter} letter: ${count} times returned!`;
+//     }   
+// }
 
 // Call via then/catch
 
@@ -114,12 +115,34 @@ async function countLetter(letter, word) {
 
 // Call via asyn/await
 
-async function run() {
-    let result = await countLetter('E','Engineer');
-    console.log(result);
-    result = await countLetter('A','Mashaqqat izlagan talabalar!');
-    console.log(result);
-    result = await countLetter('w','We are gonna build a new future!');
-    console.log(result);
+// async function run() {
+//     let result = await countLetter('E','Engineer');
+//     console.log(result);
+//     result = await countLetter('A','Mashaqqat izlagan talabalar!');
+//     console.log(result);
+//     result = await countLetter('w','We are gonna build a new future!');
+//     console.log(result);
+// }
+// run();
+
+function countDigits(word) {
+    return new Promise ((resolve, reject) => {
+        if(typeof word !== 'string') reject('Insert a string value, please!');
+        else{
+            let count = 0;
+            const digits = '1234567890';
+            for(let i=0; i < word.length; i++) {
+               if(digits.includes(word.charAt(i)) == true) {
+                count += 1
+               }
+            }
+            resolve(`Berilgan stringda ${count} ta digit mavjud!`);
+        }
+    })
 }
-run();
+
+countDigits('ad2a54y79wet0sfgb9').then(data => {
+    console.log(data);
+}).catch(err => {
+    console.log(err);
+});
