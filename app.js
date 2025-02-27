@@ -3,6 +3,7 @@ console.log('Web Serverni boshlash');
 const express = require("express");
 const app = express();
 const fs = require('fs');
+const mongodb = require('mongodb');
 
 let user;
 fs.readFile("database/user.json", "utf8",(err, data) => {
@@ -34,18 +35,21 @@ app.post("/create-item", (req, res) => {
     console.log('user entered /create-item');
     const new_reja = req.body.reja;
     db.collection('plans').insertOne({reja: new_reja}, (err, data) => {
-        if(err) {
-            console.log(err);
-            res.end('Something went wrong!');
-        } else {
-            res.end('successfully added.');
-        }
+        res.json(data.ops[0]);
+    });
+});
+
+app.post('/delete-item', (req, res) => {
+    const id = req.body.id;
+    // console.log(id);
+    db.collection('plans').deleteOne({_id : new mongodb.ObjectId(id)}, (err, data) => {
+        res.json({state : 'success!'});
     });
 });
 
 app.get('/author', (req, res) => {
     res.render('author', {user: user});
-})
+});
 
 app.get('/', function (req, res) {
     console.log('user entered /');
@@ -55,7 +59,7 @@ app.get('/', function (req, res) {
             res.end("Something went wrong!")
         }
         else{
-            console.log(data);
+            // console.log(data);
             res.render("reja", {items: data});
         }
     });

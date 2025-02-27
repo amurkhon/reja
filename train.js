@@ -1,3 +1,5 @@
+const { resolve } = require("mongodb/lib/core/topologies/read_preference");
+
 // console.log("Jack Ma maslahatlari!")
 const list = [
     "yaxshi talaba bo'ling", // 0-20
@@ -125,24 +127,57 @@ const list = [
 // }
 // run();
 
-function countDigits(word) {
-    return new Promise ((resolve, reject) => {
-        if(typeof word !== 'string') reject('Insert a string value, please!');
-        else{
-            let count = 0;
-            const digits = '1234567890';
-            for(let i=0; i < word.length; i++) {
-               if(digits.includes(word.charAt(i)) == true) {
-                count += 1
-               }
+// function countDigits(word) {
+//     return new Promise ((resolve, reject) => {
+//         if(typeof word !== 'string') reject('Insert a string value, please!');
+//         else{
+//             let count = 0;
+//             const digits = '1234567890';
+//             for(let i=0; i < word.length; i++) {
+//                if(digits.includes(word.charAt(i)) == true) {
+//                 count += 1
+//                }
+//             }
+//             resolve(`Berilgan stringda ${count} ta digit mavjud!`);
+//         }
+//     })
+// }
+
+// countDigits('ad2a54y79wet0sfgb9').then(data => {
+//     console.log(data);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+// C-TASK
+
+function checkContent (content1, content2) {
+    checkList = [];
+    if(content1.length >= content2.lewngth){
+        for (let i=0; i <= content1.length; i++){
+            if(content2.includes(content1.charAt(i))){
+                checkList.push(true);
             }
-            resolve(`Berilgan stringda ${count} ta digit mavjud!`);
+            else{
+                checkList.push(false);
+            }
         }
+    }
+    else{
+        for (let i=0; i <= content2.length; i++){
+            if(content1.includes(content2.charAt(i))){
+                checkList.push(true);
+            }
+            else{
+                checkList.push(false);
+            }
+        }
+    }
+    return checkList.every((a) => {
+        if(a==true) return true;
+        else return false;
     })
 }
 
-countDigits('ad2a54y79wet0sfgb9').then(data => {
-    console.log(data);
-}).catch(err => {
-    console.log(err);
-});
+const result = checkContent("abcd", "cdba");
+console.log(result);
