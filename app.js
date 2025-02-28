@@ -47,6 +47,35 @@ app.post('/delete-item', (req, res) => {
     });
 });
 
+app.post('/delete-all', (req, res) => {
+    if(req.body.delete_all) {
+        db.collection("plans").deleteMany(function() {
+            res.json({state: "hamma rejalar ochirildi!"});
+        })
+    }
+})
+
+
+app.post('/edit-item', (req, res) => {
+    const id = req.body.id;
+    const new_reja = req.body.reja;
+    db.collection('plans').updateOne({_id : new mongodb.ObjectId(id)}, {$set:{"reja":new_reja}}, (err, data) => {
+        if(err) {
+            res.end("Something went wrong!")
+        }
+        else{
+            db.collection('plans').find({_id: new mongodb.ObjectId(id)}).toArray((err, data) => {
+                if(err) {
+                    res.end('Something went wrong!')
+                }
+                else{
+                    res.json(data[0]);
+                }
+            });
+        }
+    });
+});
+
 app.get('/author', (req, res) => {
     res.render('author', {user: user});
 });

@@ -29,7 +29,7 @@ document.getElementById('create-form').addEventListener('submit', (e) => {
 
 document.addEventListener('click', function (e) {
     // delete oper
-    console.log(e.target.attributes['data-id']);
+    // console.log(e.target.attributes['data-id']);
     if (e.target.classList.contains('delete-me')) {
         if(confirm('Siz ushbu rejani ochirishga rozimisz!')) {
             axios.post('/delete-item', {id: e.target.getAttribute('data-id')})
@@ -48,6 +48,22 @@ document.addEventListener('click', function (e) {
 
     // edit oper
     if (e.target.classList.contains('edit-me')) {
-        alert('Siz ozgartrirish tugamasini bosdingiz?');
+        let userInput = prompt("O'zgartirish kiriting: ", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
+        if (userInput) {
+            axios.post("/edit-item", {id: e.target.getAttribute('data-id'),reja: userInput})
+            .then(response => {
+                console.log(response.data.reja);
+                e.target.parentElement.parentElement.querySelector("span").innerHTML = response.data.reja;
+            })
+            .catch(err => {});
+        }
     }
+    
 });
+
+document.getElementById("delete-all").addEventListener("click", function() {
+    axios.post("/delete-all", {delete_all : true}).then(response => {
+        alert(response.data.state);
+        document.location.reload();
+    })
+})
