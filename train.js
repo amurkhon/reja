@@ -151,33 +151,77 @@ const list = [
 
 // C-TASK
 
-function checkContent (content1, content2) {
-    checkList = [];
-    if(content1.length >= content2.lewngth){
-        for (let i=0; i <= content1.length; i++){
-            if(content2.includes(content1.charAt(i))){
-                checkList.push(true);
-            }
-            else{
-                checkList.push(false);
-            }
-        }
+// function checkContent (content1, content2) {
+//     checkList = [];
+//     if(content1.length >= content2.lewngth){
+//         for (let i=0; i <= content1.length; i++){
+//             if(content2.includes(content1.charAt(i))){
+//                 checkList.push(true);
+//             }
+//             else{
+//                 checkList.push(false);
+//             }
+//         }
+//     }
+//     else{
+//         for (let i=0; i <= content2.length; i++){
+//             if(content1.includes(content2.charAt(i))){
+//                 checkList.push(true);
+//             }
+//             else{
+//                 checkList.push(false);
+//             }
+//         }
+//     }
+//     return checkList.every((a) => {
+//         if(a==true) return true;
+//         else return false;
+//     })
+// }
+
+// const result = checkContent("abcd", "cdba");
+// console.log(result);
+
+// D-TASK
+
+class Shop {
+    constructor(cola, fanta, pepsi ) {
+        this.cola = cola;
+        this.fanta = fanta;
+        this.pepsi = pepsi;
     }
-    else{
-        for (let i=0; i <= content2.length; i++){
-            if(content1.includes(content2.charAt(i))){
-                checkList.push(true);
-            }
-            else{
-                checkList.push(false);
-            }
-        }
+
+    total(){
+        console.log(`Ombordagi mahsulotlar soni:
+        ${this.cola} ta Cola,
+        ${this.fanta} ta Fanta,
+        ${this.pepsi} ta Pepsi`);
     }
-    return checkList.every((a) => {
-        if(a==true) return true;
-        else return false;
-    })
+    sell(item, quantity) {
+        if(item == 'cola'){
+            this.cola = this.cola - quantity;
+        }else if(item == 'fanta') {
+            this.fanta = this.fanta - quantity;
+        }else{
+            this.pepsi = this.pepsi - quantity;
+        }
+        console.log(quantity + ' ta ' + item + ' sotildi.');
+    }
+    add(item, quantity) {
+        if(item == 'cola'){
+            this.cola = this.cola + quantity;
+        }else if(item == 'fanta') {
+            this.fanta = this.fanta + quantity;
+        }else{
+            this.pepsi = this.pepsi + quantity;
+        }
+        console.log(quantity + ' ta ' + item + " qo'shildi.");
+    }
 }
 
-const result = checkContent("abcd", "cdba");
-console.log(result);
+const shop = new Shop(10,10,10);
+shop.sell('fanta',5);
+shop.sell('cola',5);
+shop.add('cola',20);
+shop.add('fanta', 15);
+shop.total();
