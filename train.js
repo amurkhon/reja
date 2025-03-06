@@ -184,44 +184,56 @@ const list = [
 
 // D-TASK
 
-class Shop {
-    constructor(cola, fanta, pepsi ) {
-        this.cola = cola;
-        this.fanta = fanta;
-        this.pepsi = pepsi;
-    }
+// class Shop {
+//     constructor(cola, fanta, pepsi ) {
+//         this.cola = cola;
+//         this.fanta = fanta;
+//         this.pepsi = pepsi;
+//     }
 
-    total(){
-        console.log(`Ombordagi mahsulotlar soni:
-        ${this.cola} ta Cola,
-        ${this.fanta} ta Fanta,
-        ${this.pepsi} ta Pepsi`);
+//     total(){
+//         console.log(`Ombordagi mahsulotlar soni:
+//         ${this.cola} ta Cola,
+//         ${this.fanta} ta Fanta,
+//         ${this.pepsi} ta Pepsi`);
+//     }
+//     sell(item, quantity) {
+//         if(item == 'cola'){
+//             this.cola = this.cola - quantity;
+//         }else if(item == 'fanta') {
+//             this.fanta = this.fanta - quantity;
+//         }else{
+//             this.pepsi = this.pepsi - quantity;
+//         }
+//         console.log(quantity + ' ta ' + item + ' sotildi.');
+//     }
+//     add(item, quantity) {
+//         if(item == 'cola'){
+//             this.cola = this.cola + quantity;
+//         }else if(item == 'fanta') {
+//             this.fanta = this.fanta + quantity;
+//         }else{
+//             this.pepsi = this.pepsi + quantity;
+//         }
+//         console.log(quantity + ' ta ' + item + " qo'shildi.");
+//     }
+// }
+
+// const shop = new Shop(10,10,10);
+// shop.sell('fanta',5);
+// shop.sell('cola',5);
+// shop.add('cola',20);
+// shop.add('fanta', 15);
+// shop.total();
+
+// E-TASK
+
+function getReverse(string) {
+    let empty_string = '';
+    for(let i=string.length; 0 <= i; i=i-1) {
+        empty_string = empty_string + string.charAt(i);
     }
-    sell(item, quantity) {
-        if(item == 'cola'){
-            this.cola = this.cola - quantity;
-        }else if(item == 'fanta') {
-            this.fanta = this.fanta - quantity;
-        }else{
-            this.pepsi = this.pepsi - quantity;
-        }
-        console.log(quantity + ' ta ' + item + ' sotildi.');
-    }
-    add(item, quantity) {
-        if(item == 'cola'){
-            this.cola = this.cola + quantity;
-        }else if(item == 'fanta') {
-            this.fanta = this.fanta + quantity;
-        }else{
-            this.pepsi = this.pepsi + quantity;
-        }
-        console.log(quantity + ' ta ' + item + " qo'shildi.");
-    }
+    return empty_string
 }
-
-const shop = new Shop(10,10,10);
-shop.sell('fanta',5);
-shop.sell('cola',5);
-shop.add('cola',20);
-shop.add('fanta', 15);
-shop.total();
+const result = getReverse('mit24Khan');
+console.log('Result: ', result);
