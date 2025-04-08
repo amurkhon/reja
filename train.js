@@ -225,15 +225,3 @@ const list = [
 // shop.add('cola',20);
 // shop.add('fanta', 15);
 // shop.total();
-
-// E-TASK
-
-function getReverse(string) {
-    let empty_string = '';
-    for(let i=string.length; 0 <= i; i=i-1) {
-        empty_string = empty_string + string.charAt(i);
-    }
-    return empty_string
-}
-const result = getReverse('mit24Khan');
-console.log('Result: ', result);
